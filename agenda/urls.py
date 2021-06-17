@@ -23,12 +23,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('eventos/<titulo_evento>/', views.local_evento),
     path('agenda/', views.lista_eventos),
+    path('agenda/evento/', views.evento), # redireciona para página de cadastro de evento
+    path('agenda/evento/submit', views.submit_evento),
     # path('', views.index) #uma maneira de redirecionar a url
     path('', RedirectView.as_view(url='/agenda/')), #outra maneira de redirecionar a url
-    # redirecionar para página de login
-    path('login/', views.login_user),
-    # redireciona para submit_login
-    path('login/submit', views.submit_login),
-    # logout do usuário
-    path('logout/', views.logout_user)
+    path('login/', views.login_user), # redirecionar para página de login
+    path('login/submit', views.submit_login), # redireciona para submit_login
+    path('logout/', views.logout_user) # logout do usuário
 ]
