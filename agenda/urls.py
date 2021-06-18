@@ -24,7 +24,8 @@ urlpatterns = [
     # path('eventos/<titulo_evento>/', views.local_evento),
     path('agenda/', views.lista_eventos),
     path('agenda/evento/', views.evento), # redireciona para página de cadastro de evento
-    path('agenda/evento/submit', views.submit_evento),
+    path('agenda/evento/submit', views.submit_evento), # chamada pelo botão salvar de cadastro de evento
+    path('agenda/evento/delete/<int:id_evento>/', views.delete_evento), # excluir evento
     # path('', views.index) #uma maneira de redirecionar a url
     path('', RedirectView.as_view(url='/agenda/')), #outra maneira de redirecionar a url
     path('login/', views.login_user), # redirecionar para página de login
