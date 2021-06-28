@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime
+from datetime import datetime, timedelta
+
+
 # Create your models here.
 
 class Evento(models.Model):
@@ -28,4 +30,9 @@ class Evento(models.Model):
             return True
         else:
             return False
-        data_corrente = datetime.now()
+    def get_evento_proximo(self):
+        data_atual = self.data_evento - timedelta(hours=1)
+        if datetime.now() > data_atual:
+            return True
+        else:
+            return False

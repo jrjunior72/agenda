@@ -57,6 +57,22 @@ def lista_eventos(request):
     return render(request, 'agenda.html', dados)
 
 @login_required(login_url='/login/')
+def lista_eventos_passados(request):
+    usuario = request.user
+    data_atual = datetime.now()
+    evento = Evento.objects.filter(usuario=usuario,
+                                   data_evento__lt=data_atual)
+    dados = {'eventos':evento}
+    return render(request, 'agenda.html', dados)
+
+@login_required(login_url='/login/')
+def lista_eventos_todos(request):
+    usuario = request.user
+    evento = Evento.objects.filter(usuario=usuario)
+    dados = {'eventos':evento}
+    return render(request, 'agenda.html', dados)
+
+@login_required(login_url='/login/')
 def evento(request):
     id_evento = request.GET.get('id')
     dados = {}

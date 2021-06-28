@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('eventos/<titulo_evento>/', views.local_evento),
     path('agenda/', views.lista_eventos),
+    path('agenda/passados/', views.lista_eventos_passados),
+    path('agenda/todos/', views.lista_eventos_todos),
     path('agenta/lista/', views.json_lista_eventos),
     path('agenda/evento/', views.evento), # redireciona para página de cadastro de evento
     path('agenda/evento/submit', views.submit_evento), # chamada pelo botão salvar de cadastro de evento

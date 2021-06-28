@@ -2,14 +2,27 @@
 
 {% block content %}
     <h2>Agendamentos</h2>
-    <a href="evento/">
+    <a href="/agenda/evento/">
         <button type="button">Novo Agendamento</button>
+    </a>
+    <a href="/">
+        <button type="button">Agendamentos Futuros</button>
+    </a>
+    <a href="/agenda/passados/">
+        <button type="button">Agendamentos Antigos</button>
+    </a>
+    <a href="/agenda/todos/">
+        <button type="button">Todos Agendamentos</button>
     </a>
     <ul style="font-size: 18px">
         {% for evento in eventos %}
             <li>
                 <div style={% if evento.get_evento_atrasado %}
                                 "color:red"
+                                {% else %}
+                                    {% if evento.get_evento_proximo %}
+                                        "color:orange"
+                                    {% endif %}
                                 {% endif %} >
                     {{ evento.titulo }} - {{ evento.get_data_evento}}
                     ( <a href="evento/?id={{ evento.id }}">Editar</a>
